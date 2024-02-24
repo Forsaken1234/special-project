@@ -1,5 +1,6 @@
 import bcryptjs from 'bcryptjs'
 import User from '../models/user.model.js';
+import task from '../models/task.model.js';
 
 export const test = (req, res) => {
     res.json({
@@ -47,3 +48,17 @@ export const updateUser = async (req, res, next) => {
     }
 
   };
+
+  export const getUserTask = async (req, res, next) => {
+    if(req.user.id !== req.params.id){
+        try{
+            const tasks = await task.find({userRef: req.params.id});
+            res.status(200).json(tasks);
+        }catch(error){
+            next(error);
+        }
+
+    }else{
+        return next(errorHandler(401, 'You can only view your own task'))
+    }
+  }

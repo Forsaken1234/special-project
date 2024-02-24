@@ -221,9 +221,9 @@ export default function Profile() {
         </button>
         <Link
           className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95'
-          to={'/create-listing'}
+          to={'/create-task'}
         >
-          Create Listing
+          Create Task
         </Link>
       </form>
       <div className='flex justify-between mt-5'>
